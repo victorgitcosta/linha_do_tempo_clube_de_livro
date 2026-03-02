@@ -1,0 +1,47 @@
+.timeline-container {
+  width: 100%;
+  overflow: hidden;
+  background: #f4f4f4;
+  padding: 50px 0;
+  position: relative;
+}
+
+.timenav-wrapper {
+  width: 100%;
+  position: relative;
+  height: 60px;
+}
+
+.timenav-line {
+  display: flex;
+  position: absolute;
+  left: 50%; /* Start the line in the center */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.nav-item {
+  width: 150px; /* Distance between events */
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  color: #999;
+  font-weight: bold;
+}
+
+.nav-item.active {
+  color: #b52b27; /* VinePair Red */
+  transform: scale(1.2);
+}
+
+/* The horizontal line itself */
+.timenav-line::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -2000px;
+  right: -2000px;
+  height: 2px;
+  background: #ccc;
+  z-index: -1;
+}

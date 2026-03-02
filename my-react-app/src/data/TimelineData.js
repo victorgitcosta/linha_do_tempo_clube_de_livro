@@ -1,0 +1,11 @@
+export const timelineData = [
+    { month: "Março/2025", title: "O Encontro Marcado", desc: "Primeiro encontro do projeto idealizado pelo biblioteca Luís, o livro foi selecionado pelo seu caráter de clássico contemporâneo e a maioria dos leitores acharam a escrita cativante e a trama imprevisível", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado"},
+    { month: "Abril/2025", title: "Primeiro Eu Tive Que Morrer", desc: "Egyptians began making wine-like substances for ceremonies.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado"},
+    { month: "Junho/2025", title: "Doze Contos Peregrinos", desc: "The Phoenicians begin spreading grapes across the Mediterranean.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado"},
+    { month: "Julho/2025", title: "Enterre Seus Mortos", desc: "The Roman Empire adopts viticulture as a core part of their culture.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado"},
+    { month: "Agosto/2025", title: "Nadando No Escuro", desc: "Portuguese and Spanish missionaries bring vines to the Americas.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado" },
+    { month: "Setembro/2025", title: "Corpos Secos", desc: "The Roman Empire adopts viticulture as a core part of their culture.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado" },
+    { month: "Novembro/2025", title: "O Vilarejo", desc: "The Roman Empire adopts viticulture as a core part of their culture.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado" },
+    { month: "Dezembro/2025", title: "O Feiticeiro de Terramar", desc: "The Roman Empire adopts viticulture as a core part of their culture.",image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado" },
+    { month: "Março/2026", title: "Violeta", desc: "The Roman Empire adopts viticulture as a core part of their culture.", image: "https://via.placeholder.com/300x450/444444/FFFFFF?text=O+Encontro+Marcado" },
+];

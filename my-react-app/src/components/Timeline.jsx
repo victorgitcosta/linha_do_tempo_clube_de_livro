@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { timelineData } from '../data/TimelineData';
 import './Timeline.css';
 import { commentsData } from "../data/CommentsData";
@@ -8,8 +8,21 @@ import {meetingsData} from "../data/MeetingsData";
 
 const Timeline = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const itemWidth = 200;
     const [showHint, setShowHint] = useState(true)
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const isMobile = windowWidth <= 768;
+    const itemWidth = isMobile ? 100 : 200;
+    const sliderOffset = isMobile
+        ? currentIndex * 100 - windowWidth / 2 + 50
+        : currentIndex * itemWidth;
 
     useEffect(() => {
         const timer = setTimeout(() => setShowHint(false), 5000);
@@ -63,44 +76,70 @@ const Timeline = () => {
         </div>
     );
 
-    return (
-        <div className="timeline-wrapper">
+    const touchStartX = useRef(null);
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
 
-            {/* 1. Content Display */}
-            <div className="content-section">
+    const handleTouchEnd = (e) => {
+        if (touchStartX.current === null) return;
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
+        if (diff > 50) goToIndex(currentIndex + 1);
+        if (diff < -50) goToIndex(currentIndex - 1);
+        touchStartX.current = null;
+    };
+
+    return (
+    <div className="timeline-wrapper" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+
+    
+
+        {/* 1. Content Display */}
+        <div className="content-section">
+
+            {/* Left column — book or comments depending on index */}
+            <div className={`col-primary ${isEven ? 'order-book' : 'order-comments'}`}>
                 {isEven ? bookBlock : commentsBlock}
+            </div>
+
+            {/* Right column — opposite */}
+            <div className={`col-secondary ${isEven ? 'order-comments' : 'order-book'}`}>
                 {isEven ? commentsBlock : bookBlock}
             </div>
 
-            {/* 2. Navigation Slider — always at bottom */}
-            <div className="timenav-container">
-                <div
-                    className="timenav-slider"
-                    style={{ transform: `translateX(-${currentIndex * itemWidth}px)` }}
-                >
-                    {timelineData.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`nav-item ${currentIndex === index ? 'active' : ''}`}
-                            onClick={() => goToIndex(index)}
-                        >
-                            <span>{item.month}</span>
-                            <div className="dot"></div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            {showHint && (
-                <div className="keyboard-hint" onClick={()=> setShowHint(false)}>
-                    <span>Use também as teclas direcionais</span>
-                    <kbd>←</kbd>
-                    <kbd>→</kbd>
-                    <span>para navegar a linha do tempo</span>
-                    <button className="hint-close">✕</button>
-                </div>      
-            )}
         </div>
-    );
+
+        {/* 2. Navigation Slider */}
+        <div className="timenav-container">
+            <div
+                className="timenav-slider"
+                style={{ transform: `translateX(-${sliderOffset}px)` }}
+            >
+                {timelineData.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`nav-item ${currentIndex === index ? 'active' : ''}`}
+                        onClick={() => goToIndex(index)}
+                    >
+                        <span>{item.month}</span>
+                        <div className="dot"></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        {showHint && (
+            <div className="keyboard-hint" onClick={() => setShowHint(false)}>
+                <span>Use também as teclas direcionais</span>
+                <kbd>←</kbd>
+                <kbd>→</kbd>
+                <span>para navegar a linha do tempo</span>
+                <button className="hint-close">✕</button>
+            </div>
+        )}
+
+    </div>
+);
 };
 
 export default Timeline;

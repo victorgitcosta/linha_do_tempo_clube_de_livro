@@ -192,3 +192,72 @@ kbd {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+@media (max-width: 768px) {
+    .timeline-wrapper {
+        height: auto;
+        min-height: 100vh;
+    }
+    /*Single Column*/
+    .content-section {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 24px;
+        overflow-y: visible;
+    }
+
+    /*Mobile: Order 1*/
+    .order-book {
+        order: 1;
+    }
+
+    .order-comments {
+        order: 2;
+    }
+
+    .col-primary, .col-secondary {
+        width: 100%;
+    }
+
+    .book-center {
+        align-items: center;
+        text-align: center;
+    }
+
+    .book-cover {
+        height: 250px;
+    }
+
+    .comments-column {
+        padding-top: 0;
+    }
+
+    /* Shrink timeline nav for small screens */
+    .timenav-container {
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .timenav-slider {
+        left: 50%; /* center the active item on screen */
+        transform-origin: left center;
+    }
+
+    .nav-item {
+        width: 100px;
+    }
+
+    .nav-item span {
+        font-size: 9px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Hide keyboard hint on mobile — not relevant */
+    .keyboard-hint {
+        display: none;
+    }
+}

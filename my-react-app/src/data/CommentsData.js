@@ -1,3 +1,4 @@
+
 export const commentsData = [
     {
         id: 1,
@@ -29,4 +30,9 @@ export const commentsData = [
         author: "Ana",
         text: "O realismo mágico do Márquez nunca decepciona."
     },
+    {
+        id: 6,
+        book: "O Encontro Marcado - Fernando Sabino (1989)",
+        image: "/meeting_photos/o-encontro-marcado.jpg"
+    }
 ]

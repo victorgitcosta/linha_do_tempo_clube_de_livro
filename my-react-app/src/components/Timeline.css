@@ -19,7 +19,7 @@
     align-items: start;
     gap: 48px;
     flex: 1;
-    padding: 40px;
+    padding: 72px;
     overflow-y: auto;
 }
 
@@ -78,7 +78,8 @@
 }
 
 .nav-item span {
-    font-size: 12px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
     font-weight: bold;
     color: #999;
     text-transform: uppercase;
@@ -112,6 +113,16 @@
     margin-bottom: 25px;
     object-fit: cover;
     animation: fadeIn 0.5s ease;
+}
+
+.book-cover :hover {
+    transform: scale(1.10);
+}
+
+.book-center p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: medium;
+    font-weight: 50;
 }
 
 .keyboard-hint {
@@ -153,6 +164,26 @@ kbd {
 
 .hint-close:hover {
     opacity: 1;
+}
+
+.meeting-photo {
+    margin-top: auto;
+    padding-top: 24px;
+}
+.meeting-photo-img {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    object-fit: cover;
+}
+
+.meeting-photo-img.portrait {
+    width: 350px;
+    height: 650px;
+}
+
+.meeting-photo-img.landscape {
+    width: 600px;
+    height: 300px;
 }
 
 @keyframes fadeOut {

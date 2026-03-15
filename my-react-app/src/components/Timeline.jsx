@@ -3,6 +3,8 @@ import { timelineData } from '../data/TimelineData';
 import './Timeline.css';
 import { commentsData } from "../data/CommentsData";
 import CommentCard from "./CommentCard";
+import MeetingPhoto from './MeetingPhoto';
+import {meetingsData} from "../data/MeetingsData";
 
 const Timeline = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -47,11 +49,17 @@ const Timeline = () => {
         </div>
     );
 
+    const currentMeeting = meetingsData[currentIndex];
+
     const commentsBlock = (
         <div className="comments-column">
             {bookComments.map(comment => (
                 <CommentCard key={comment.id} {...comment} />
             ))}
+            {currentMeeting?.image && (
+                <MeetingPhoto image={currentMeeting.image}/>
+            )}
+        
         </div>
     );
 

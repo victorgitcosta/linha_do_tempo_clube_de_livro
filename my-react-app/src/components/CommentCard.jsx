@@ -1,4 +1,4 @@
-const CommentCard = ({author, date, text}) => {
+const CommentCard = ({author, text}) => {
     return (
         <div className="comment-card">
             <p className="comment-text">"{text}"</p>

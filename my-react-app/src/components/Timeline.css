@@ -4,7 +4,6 @@
     --item-width: 200px;
 }
 
-/* Outer wrapper: stacks content on top, timeline pinned to bottom */
 .timeline-wrapper {
     display: flex;
     flex-direction: column;
@@ -12,7 +11,6 @@
     overflow: hidden;
 }
 
-/* 2-column grid: book side | comments side */
 .content-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -38,7 +36,6 @@
     padding-top: 24px;
 }
 
-/* Timeline always at the bottom */
 .timenav-container {
     flex-shrink: 0;
     height: 150px;
@@ -127,7 +124,7 @@
 
 .keyboard-hint {
     position: fixed;
-    bottom: 170px; /* sits just above the timeline nav */
+    bottom: 170px; 
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.75);

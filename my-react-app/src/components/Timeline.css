@@ -36,29 +36,48 @@
     padding-top: 24px;
 }
 
+/* Scrollable timenav */
 .timenav-container {
     flex-shrink: 0;
     height: 150px;
     background: #f9f9f9;
     border-top: 1px solid var(--vp-gray);
-    position: relative;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--vp-red) var(--vp-gray);
+}
+
+.timenav-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.timenav-container::-webkit-scrollbar-track {
+    background: var(--vp-gray);
+}
+
+.timenav-container::-webkit-scrollbar-thumb {
+    background: var(--vp-red);
+    border-radius: 2px;
 }
 
 .timenav-slider {
-    position: absolute;
-    top: 50%;
-    left: 200px;
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    align-items: center;
+    height: 100%;
+    padding: 0 25px;
+    position: relative;
+    min-width: max-content;
 }
 
 .timenav-slider::before {
     content: '';
     position: absolute;
     top: 50%;
-    left: -5000px;
-    right: -5000px;
+    left: 0;
+    right: 0;
     height: 2px;
     background: var(--vp-gray);
     z-index: 0;
@@ -112,7 +131,7 @@
     animation: fadeIn 0.5s ease;
 }
 
-.book-cover :hover {
+.book-cover:hover {
     transform: scale(1.10);
 }
 
@@ -124,7 +143,7 @@
 
 .keyboard-hint {
     position: fixed;
-    bottom: 170px; 
+    bottom: 170px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.75);
@@ -167,6 +186,7 @@ kbd {
     margin-top: auto;
     padding-top: 24px;
 }
+
 .meeting-photo-img {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -194,19 +214,34 @@ kbd {
 }
 
 @media (max-width: 768px) {
+    .meeting-photo-img.portrait {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+    }
+
+    .meeting-photo-img.landscape {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+    }
     .timeline-wrapper {
         height: auto;
         min-height: 100vh;
+        overflow-x: hidden;
     }
-    /*Single Column*/
+
     .content-section {
         grid-template-columns: 1fr;
         padding: 20px;
         gap: 24px;
         overflow-y: visible;
+        max-width: 100vw;
+        box-sizing: border-box;
     }
 
-    /*Mobile: Order 1*/
     .order-book {
         order: 1;
     }
@@ -217,30 +252,42 @@ kbd {
 
     .col-primary, .col-secondary {
         width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .book-center {
+        width: 100%;
         align-items: center;
         text-align: center;
+        box-sizing: border-box;
+    }
+
+    .book-center h1 {
+        font-size: 1.2rem;
+        word-break: break-word;
+    }
+
+    .book-center p {
+        font-size: 0.9rem;
+        word-break: break-word;
     }
 
     .book-cover {
         height: 250px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
     }
 
     .comments-column {
         padding-top: 0;
     }
 
-    /* Shrink timeline nav for small screens */
     .timenav-container {
         height: 100px;
-        overflow: hidden;
-    }
-
-    .timenav-slider {
-        left: 50%; /* center the active item on screen */
-        transform-origin: left center;
     }
 
     .nav-item {
@@ -256,7 +303,6 @@ kbd {
         height: 8px;
     }
 
-    /* Hide keyboard hint on mobile — not relevant */
     .keyboard-hint {
         display: none;
     }

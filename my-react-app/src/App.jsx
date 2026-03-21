@@ -1,4 +1,5 @@
 import Timeline from './components/Timeline';
+import Header from './components/Header';
 import './index.css';
 
 function App() {

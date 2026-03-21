@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
-// https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: '/linha_do_tempo_clube_de_livro/'
-})
+  base: command === 'build' ? '/linha_do_tempo_clube_de_livro/' : '/'
+}))

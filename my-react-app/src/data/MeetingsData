@@ -1,20 +1,22 @@
+const base = import.meta.env.BASE_URL;
+
 export const meetingsData = [
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/1.jpeg"},
+        image: `${base}meeting_photos/1.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/2.jpeg"},
+        image: `${base}meeting_photos/2.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/3.jpeg"},
+        image: `${base}meeting_photos/3.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/4.jpeg"},
+        image: `${base}meeting_photos/4.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/5.jpeg" },
+        image: `${base}meeting_photos/5.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/6.jpeg" },
+        image: `${base}meeting_photos/6.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/7.jpeg" },
+        image: `${base}meeting_photos/7.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/8.jpeg" },
+        image: `${base}meeting_photos/8.jpeg`},
     {
-        image: "/linha_do_tempo_clube_de_livro/meeting_photos/9.jpg" },
+        image: `${base}meeting_photos/9.jpeg`},
 ];

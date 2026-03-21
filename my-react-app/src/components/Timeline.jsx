@@ -9,15 +9,21 @@ import { meetingsData } from "../data/MeetingsData";
 const Timeline = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showHint, setShowHint] = useState(true);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const navRef = useRef(null);
     const touchStartX = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => setShowHint(false), 5000);
         return () => clearTimeout(timer);
     }, []);
 
-    // Auto-scroll active nav item into center when index changes
     useEffect(() => {
         if (navRef.current) {
             const activeItem = navRef.current.querySelector('.nav-item.active');
@@ -62,6 +68,8 @@ const Timeline = () => {
     const bookComments = commentsData.filter(c => c.book === currentItem.title);
     const isEven = currentIndex % 2 === 0;
     const currentMeeting = meetingsData[currentIndex];
+    const totalItems = timelineData.length;
+    const navItemWidth = Math.max(80, Math.min(250, (windowWidth * 0.8) / totalItems));
 
     const bookBlock = (
         <div className="book-center">
@@ -112,9 +120,13 @@ const Timeline = () => {
                             key={index}
                             className={`nav-item ${currentIndex === index ? 'active' : ''}`}
                             onClick={() => goToIndex(index)}
+                            style={{ width: `${navItemWidth}px` }}
                         >
-                            <span>{item.month}</span>
-                            <div className="dot"></div>
+                            <div className="book-spine" style={{ backgroundColor: item.color }}>
+                                <span className="spine-title">{item.title.split(' - ')[0]}</span>
+                                <span className="spine-author">{item.surname}</span>
+                            </div>
+                            <span className="spine-month">{item.month}</span>
                         </div>
                     ))}
                 </div>
